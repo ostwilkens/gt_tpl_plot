@@ -20,13 +20,7 @@
   },
   "dependencies": {
     "@thi.ng/adapt-dpi": "^2.1.8",
-    "@thi.ng/colored-noise": "^0.3.10",
     "@thi.ng/geom": "^3.4.2",
-    "@thi.ng/geom-api": "^3.3.2",
-    "@thi.ng/geom-fuzz": "^2.1.19",
-    "@thi.ng/hiccup-canvas": "^2.1.17",
-    "@thi.ng/pixel": "^3.4.7",
-    "@thi.ng/random-fxhash": "^0.2.4",
-    "@thi.ng/rasterize": "^0.3.13"
+    "@thi.ng/random-fxhash": "^0.2.4"
   }
 }
