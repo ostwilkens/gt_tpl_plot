@@ -3,6 +3,9 @@ import {
     PathBuilder,
     asSvg
 } from "@thi.ng/geom";
+import { Noise } from './noise'
+
+export const noise = new Noise(fxhash).noise
 
 const download = (filename, text) => {
     var element = document.createElement('a')
@@ -83,7 +86,7 @@ export const init = (formulaFn) => {
 
         lineAction(x, y)
     }
-    const { penColor, penSize } = formulaFn(moveAction, lineAction, turtleAction)
+    const { penColor, penSize, margin } = formulaFn(moveAction, lineAction, turtleAction)
 
 
     // rescale & center
@@ -91,7 +94,6 @@ export const init = (formulaFn) => {
     const drawingHeight = maxY - minY
     const paperWidth = 1.0
     const paperHeight = 1.0
-    const margin = 0.1
 
     const scaleX = (paperWidth / 1.0 - margin * 2.0) / drawingWidth
     const scaleY = (paperHeight / 1.0 - margin * 2.0) / drawingHeight
@@ -146,12 +148,19 @@ export const init = (formulaFn) => {
     new ResizeObserver(entries => {
         const entry = entries[0]
         const { width, height } = entry.contentRect
-        adaptDPI(canvas, width, height)
+
+        canvas.width = width * (window.devicePixelRatio || 1)
+        canvas.height = height * (window.devicePixelRatio || 1)
+
         render()
     }).observe(canvas)
 
-    adaptDPI(canvas, canvas.clientWidth, canvas.clientHeight)
+
+    canvas.width = canvas.clientWidth * (window.devicePixelRatio || 1)
+    canvas.height = canvas.clientHeight * (window.devicePixelRatio || 1)
     render()
+
+    // adaptDPI(canvas, canvas.clientWidth, canvas.clientHeight)
     if (isFxpreview) {
         fxpreview()
     }
