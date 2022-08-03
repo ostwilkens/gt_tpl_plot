@@ -7,8 +7,9 @@
 - [x] save as plottable svg
 - [x] pencil brush texture
 - [x] auto scale
-- [ ] easy funcs a-la pozyvec
+- [x] easy funcs a-la pozyvec
 - [ ] generate valid svg
+- [ ] github template
 - [ ] draw animation
 - [ ] realtime plotter visual
 

@@ -6,7 +6,7 @@ import {
     weightedKey,
     seedFromHash
 } from '@thi.ng/random-fxhash'
-import { init, noise } from './tools'
+import { init, noise, render2 } from './tools'
 
 // function shortcuts
 const log = console.log
@@ -42,6 +42,31 @@ const formula44 = (m, l, t) => {
         }
     }
 
+
+    return { penColor: 'black', penSize: 0.3, margin: 0.05 }
+}
+
+const formula44b = (frame) => (m, l, t) => {
+    for (var i = 1; i < 20; i++) {
+        var x = 0
+        var y = 0
+
+        var points = 80
+
+        for (var k = 0; k < points; k++) {
+            var a = 2 * PI * k / points + i / 1 + frame * 0.001
+            var cx = cos(a + 0.52)
+            var cy = sin(a + 0.4)
+            var r = 90 + noise([cx, cy, i * 1], 10, 23, 3)
+            cx *= r
+            cy *= r
+            var a1 = r * 0.41
+            m(x + cos(a) * a1, y + sin(a) * a1)
+            var xo = noise([cx, cy, i], 0.01, 20, 3) * 0
+            var yo = noise([cy, cx, i], 0.01, 20, 3) * 0
+            l(x + cx + xo, (y + cy * 1.25 + yo) * 1.0)
+        }
+    }
 
     return { penColor: 'black', penSize: 0.3, margin: 0.05 }
 }
@@ -114,4 +139,12 @@ const formula42 = (m, l, t) => {
     return { penColor: 'black', penSize: 1.0 }
 }
 
+// const loopfn = (frame) => {
+//     render2(formula44b(frame))
+//     window.requestAnimationFrame(() => loopfn(frame + 1))
+// }
+
+// window.requestAnimationFrame(() => loopfn(0))
+
 init(formula44)
+// render2(formula44b(1))
