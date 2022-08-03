@@ -11,8 +11,8 @@
 - ~~generate valid svg~~
 - ~~github template~~
 - ~~resize option~~
-- test in https://www.fxhash.xyz/sandbox
-- test on Chrome, Safari, iOS, Firefox, qtbrowser
+- ~~test in https://www.fxhash.xyz/sandbox (noise image not loaded correctly in sandbox)~~
+- ~~test on Chrome, Safari, iOS, Firefox, qtbrowser~~
 
 ## Development
 

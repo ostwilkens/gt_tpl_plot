@@ -15,6 +15,7 @@ body {
     height: min(100vh, 100vw);
     display: flex;
     position: relative;
+    overflow: hidden;
 }
 
 #canvas {

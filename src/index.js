@@ -22,12 +22,15 @@ const PI2 = Math.PI * 2.0
 
 
 const formula = (m, l, t) => {
-    m(0.0, 0.0)
-    l(0.25, 0.25 + RND.float(0.2))
-    t(0.0, 0.1)
-    t(-0.1, 0.0)
+    for (var i = 0.0; i < PI2; i += 0.1) {
+        var x = cos(i)
+        var y = sin(i)
+        var r = noise([x, y], 1, 10, 3)
+        m(x * r, y * r)
+        l(x, y)
+    }
 
-    return { penColor: 'black', penSize: 0.3, margin: 0.05, resize: true }
+    return { penColor: 'black', penSize: 0.3 + RND.float(0.4), margin: 0.05, resize: true }
 }
 
 init(formula)

@@ -137,7 +137,7 @@ export const init = (formulaFn) => {
     const canvas = document.getElementById("canvas")
     canvas.addEventListener('dblclick', () => {
         const svgString = formulaToSvg(actions, settings)
-        console.log(svgString)
+        // console.log(svgString)
         download(`${fxhash}.svg`, svgString)
     })
     const ctx = canvas.getContext('2d')
