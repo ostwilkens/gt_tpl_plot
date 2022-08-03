@@ -28,12 +28,12 @@ const formulaToSvg = (actions, settings) => {
         switch (action.type) {
             case 'm': {
                 const { x, y } = action
-                pathBuilder.moveTo([x * scale, y * scale])
+                pathBuilder.moveTo([(x + 0.5) * scale, (y + 0.5) * scale])
                 break
             }
             case 'l': {
                 const { x, y } = action
-                pathBuilder.lineTo([x * scale, y * scale])
+                pathBuilder.lineTo([(x + 0.5) * scale, (y + 0.5) * scale])
                 break
             }
         }
@@ -44,6 +44,9 @@ const formulaToSvg = (actions, settings) => {
     const svg = asSvg(
         svgDoc(
             {
+                width: scale,
+                height: scale,
+                viewBox: `0 0 ${scale} ${scale}`,
                 fill: "none",
                 stroke: penColor,
                 "stroke-width": strokeWidth,
@@ -101,27 +104,34 @@ export const init = (formulaFn) => {
         lineAction(x, y)
     }
     const settings = formulaFn(moveAction, lineAction, turtleAction)
-    const { penColor, penSize, margin } = settings
+    const { penColor, penSize, margin, resize } = settings
 
     // rescale & center
-    const drawingWidth = maxX - minX
-    const drawingHeight = maxY - minY
-    const paperWidth = 1.0
-    const paperHeight = 1.0
+    if (resize) {
+        const drawingWidth = maxX - minX
+        const drawingHeight = maxY - minY
+        const paperWidth = 1.0
+        const paperHeight = 1.0
 
-    const scaleX = (paperWidth / 1.0 - margin * 2.0) / drawingWidth
-    const scaleY = (paperHeight / 1.0 - margin * 2.0) / drawingHeight
-    const scale = Math.min(scaleX, scaleY)
+        const scaleX = (paperWidth / 1.0 - margin * 2.0) / drawingWidth
+        const scaleY = (paperHeight / 1.0 - margin * 2.0) / drawingHeight
+        const scale = Math.min(scaleX, scaleY)
 
-    const scaledDrawingWidth = drawingWidth * scale
-    const scaledDrawingHeight = drawingHeight * scale
+        const scaledDrawingWidth = drawingWidth * scale
+        const scaledDrawingHeight = drawingHeight * scale
 
-    const offsetX = (paperWidth - scaledDrawingWidth) / 2.0
-    const offsetY = (paperHeight - scaledDrawingHeight) / 2.0
+        const offsetX = (paperWidth - scaledDrawingWidth) / 2.0
+        const offsetY = (paperHeight - scaledDrawingHeight) / 2.0
 
-    for (var i = 0; i < actions.length; i++) {
-        actions[i].x = (actions[i].x - minX) * scale + offsetX - 0.5
-        actions[i].y = (actions[i].y - minY) * scale + offsetY - 0.5
+        for (var i = 0; i < actions.length; i++) {
+            actions[i].x = (actions[i].x - minX) * scale + offsetX - 0.5
+            actions[i].y = (actions[i].y - minY) * scale + offsetY - 0.5
+        }
+    } else {
+        for (var i = 0; i < actions.length; i++) {
+            actions[i].x -= 0.5
+            actions[i].y -= 0.5
+        }
     }
 
     const canvas = document.getElementById("canvas")
