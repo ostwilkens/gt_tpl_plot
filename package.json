@@ -19,7 +19,6 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
-    "@thi.ng/adapt-dpi": "^2.1.8",
     "@thi.ng/geom": "^3.4.2",
     "@thi.ng/random-fxhash": "^0.2.4"
   }
