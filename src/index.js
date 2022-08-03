@@ -20,6 +20,12 @@ const PI = Math.PI
 const PI2 = Math.PI * 2.0
 // noise([pos], freq, ampl, oct, lacu, gain)
 
+const features = window.$fxhashFeatures = {
+    // "Dark": probability(0.2),
+    // "Dark": false,
+    "Pen Size": pick([0.5, 0.6, 0.7]),
+    // "Pen Color": pick(["red", "black"]),
+}
 
 const formula = (m, l, t) => {
     for (var i = 0.0; i < PI2; i += 0.1) {
@@ -30,7 +36,7 @@ const formula = (m, l, t) => {
         l(x, y)
     }
 
-    return { penColor: 'black', penSize: 0.3 + RND.float(0.4), margin: 0.05, resize: true }
+    return { invert: false, penColor: features["Pen Color"], penSize: features["Pen Size"], margin: 0.05, resize: true }
 }
 
 init(formula)

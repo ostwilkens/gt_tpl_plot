@@ -3,6 +3,14 @@ import {
     asSvg,
     svgDoc,
 } from "@thi.ng/geom";
+import {
+    RND,
+    probability,
+    pick,
+    pickKey,
+    weightedKey,
+    seedFromHash
+} from '@thi.ng/random-fxhash'
 import { Noise } from './noise'
 
 export const noise = new Noise(fxhash).noise
@@ -18,7 +26,7 @@ const download = (filename, text) => {
 }
 
 const formulaToSvg = (actions, settings) => {
-    const { penColor, penSize, margin } = settings
+    const { penColor, penSize, margin, invert } = settings
 
     const scale = 800
     const strokeWidth = scale * 0.005 * penSize
@@ -104,7 +112,17 @@ export const init = (formulaFn) => {
         lineAction(x, y)
     }
     const settings = formulaFn(moveAction, lineAction, turtleAction)
-    const { penColor, penSize, margin, resize } = settings
+    const { penColor, penSize, margin, resize, invert } = settings
+
+    // add invert div
+    if (invert) {
+        const invertDiv = document.createElement("div")
+        invertDiv.setAttribute("id", "invert")
+
+        const container = document.getElementById("container");
+        container.appendChild(invertDiv)
+    }
+
 
     // rescale & center
     if (resize) {
@@ -165,7 +183,15 @@ export const init = (formulaFn) => {
             }
         }
 
-        ctx.stroke()
+        const brushSteps = (1 + Math.ceil(penSize)) * (window.devicePixelRatio || 1)
+        for(var i = 0; i < brushSteps; i++) {
+            const progress = (i + 1) / brushSteps
+            ctx.lineWidth = canvas.width * 0.005 * penSize * (1.0 - progress * 0.8)
+            ctx.globalAlpha = 0.1 + progress * 0.7
+            ctx.stroke()
+        }
+
+        // ctx.stroke()
     }
 
     new ResizeObserver(entries => {

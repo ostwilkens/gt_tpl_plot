@@ -13,6 +13,10 @@
 - ~~resize option~~
 - ~~test in https://www.fxhash.xyz/sandbox (noise image not loaded correctly in sandbox)~~
 - ~~test on Chrome, Safari, iOS, Firefox, qtbrowser~~
+- ~~black paper feature~~
+- ~~ambient lighting~~
+- ~~more realistic pen texture~~
+- bug: invert artifact on ios
 
 ## Development
 
