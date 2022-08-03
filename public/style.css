@@ -6,8 +6,6 @@ body {
     height: 100%;
     margin: 0;
     display: flex;
-    /* background: rgba(232, 235, 237); */
-    /* background: rgba(255, 255, 255, 1.0); */
     background: #222;
 }
 
@@ -27,8 +25,6 @@ body {
     border-radius: min(3px, calc(max(10vw - 10vh, 10vh - 10vw) - 0px));
     background-color: rgba(229, 227, 227, 1.0);
     border: 1px solid rgba(0, 0, 0, 0.02);
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
-    /* background: url('./noise.png'); */
 }
 
 #overlay {
@@ -37,7 +33,7 @@ body {
     left: max(5vw - 5vh, 5vh - 5vw);
     width: calc(100% - max(10vw - 10vh, 10vh - 10vw));
     height: calc(100% - max(10vw - 10vh, 10vh - 10vw));
-    background: url('./pen_noise.png');
+    background: url('./noise.png');
     background-repeat: repeat;
     background-size: 25%;
     mix-blend-mode: lighten;

@@ -27,7 +27,7 @@ const formula = (m, l, t) => {
     t(0.0, 0.1)
     t(-0.1, 0.0)
 
-    return { penColor: 'black', penSize: 0.5, margin: 0.05, resize: true }
+    return { penColor: 'black', penSize: 0.3, margin: 0.05, resize: true }
 }
 
 init(formula)
