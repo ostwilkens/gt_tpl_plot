@@ -1,22 +1,21 @@
+# gt_tpl_plot
+
+Plottable generative token template for fxhash
+
+## Features
+- 1:1 aspect ratio
+- Viewport resize handling
+- Paper-like texture
+- Doubleclick to save svg
+- Margins collapse when viewport is square
+- Automatically resize plot to fit canvas
+- Invert colors option
+- Simplex noise by [Jonas Wagner](https://github.com/jwagner/simplex-noise.js) and helper function by [brubsby](https://github.com/brubsby/cozyvec)
+- fxhash random functions by [Karsten Schmidt](https://github.com/thi-ng/umbrella/tree/develop/packages/random-fxhash)
+
 ## Todo
 
-- ~~1:1 aspect ratio~~
-- ~~paper texture~~
-- ~~thi.ng fxrand funcs~~
-- ~~generate svg from geom~~
-- ~~save as plottable svg~~
-- ~~pencil brush texture~~
-- ~~auto scale~~
-- ~~easy funcs a-la pozyvec~~
-- ~~generate valid svg~~
-- ~~github template~~
-- ~~resize option~~
-- ~~test in https://www.fxhash.xyz/sandbox (noise image not loaded correctly in sandbox)~~
-- ~~test on Chrome, Safari, iOS, Firefox, qtbrowser~~
-- ~~black paper feature~~
-- ~~ambient lighting~~
-- ~~more realistic pen texture~~
-- bug: invert artifact on ios
+- Bug: Invert artifact on ios
 
 ## Development
 
