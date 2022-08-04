@@ -2,6 +2,8 @@
 
 Plottable generative token template for fxhash
 
+![Screenshot](screenshot.jpg)
+
 ## Features
 - 1:1 aspect ratio
 - Viewport resize handling
@@ -17,15 +19,16 @@ Plottable generative token template for fxhash
 
 - Bug: Invert artifact on ios
 
-## Development
+## Usage
 
 ```
 npm i
 npm start
 ```
+- Edit `formula` in `src/index.js` (`m = moveTo, l = lineTo, t = relative lineTo`)
 
 ## Publishing
 
 - Update project name in `package.json`
 - Run `npm start build`
-- Upload `dist/project.zip` to https://www.fxhash.xyz/mint-generative/
+- Upload `dist/project.zip` at https://www.fxhash.xyz/mint-generative/
