@@ -26,7 +26,7 @@ const features = window.$fxhashFeatures = {
 }
 
 const formula = (m, l, j, t) => {
-    for (var i = 0.0; i <= PI2; i += PI2 / 100.0) {
+    for (var i = 0.0; i <= PI2; i += PI2 / 1000.0) {
         var x = cos(i)
         var y = sin(i)
         var n = noise([x, y])
