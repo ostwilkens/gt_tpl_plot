@@ -25,7 +25,7 @@ Plottable generative token template for fxhash
 npm i
 npm start
 ```
-- Edit `formula` in `src/index.js` (`m = moveTo, l = lineTo, t = relative lineTo`)
+- Edit `formula` in `src/index.js` (`m = moveTo, l = lineTo, j = relative MoveTo, t = relative lineTo`)
 
 ## Publishing
 

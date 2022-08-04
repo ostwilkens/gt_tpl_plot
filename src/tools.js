@@ -111,7 +111,13 @@ export const init = (formulaFn) => {
 
         lineAction(x, y)
     }
-    const settings = formulaFn(moveAction, lineAction, turtleAction)
+    const jumpAction = (x, y) => {
+        x += currentX
+        y += currentY
+
+        moveAction(x, y)
+    }
+    const settings = formulaFn(moveAction, lineAction, jumpAction, turtleAction)
     const { penColor, penSize, margin, resize, invert } = settings
 
     // add invert div

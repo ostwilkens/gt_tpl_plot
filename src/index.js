@@ -22,15 +22,16 @@ const PI2 = Math.PI * 2.0
 
 const features = window.$fxhashFeatures = {
     "Dark": probability(0.2),
-    "Pen Size": pick([0.5, 0.6, 0.7])
+    "Pen Size": pick([0.4, 0.6, 0.8])
 }
 
-const formula = (m, l, t) => {
-    for (var i = 0.0; i < PI2; i += 0.1) {
+const formula = (m, l, j, t) => {
+    for (var i = 0.0; i <= PI2; i += PI2 / 100.0) {
         var x = cos(i)
         var y = sin(i)
-        var r = noise([x, y], 1, 10, 3)
-        m(x * r, y * r)
+        var n = noise([x, y])
+        x *= 1.0 + n
+        y *= 1.0 + n
         l(x, y)
     }
 
