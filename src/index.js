@@ -16,6 +16,8 @@ const sin = Math.sin
 const cos = Math.cos
 const floor = Math.floor
 const ceil = Math.ceil
+const abs = Math.abs
+const sqrt = Math.sqrt
 const PI = Math.PI
 const PI2 = Math.PI * 2.0
 // noise([pos], freq, ampl, oct, lacu, gain)
