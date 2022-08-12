@@ -30,5 +30,5 @@ npm start
 ## Publishing
 
 - Update project name in `package.json`
-- Run `npm start build`
+- Run `npm run build`
 - Upload `dist/project.zip` at https://www.fxhash.xyz/mint-generative/
